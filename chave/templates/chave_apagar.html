@@ -1,0 +1,24 @@
+{% extends 'principal.html' %}
+{% block content %}
+    <section class="section has-background-white-ter">
+        <div class="container">
+            <div class="columns is-mobile">
+                <div class="column is-half is-offset-one-quarter">
+                    <h3 class="title is-size-3">Dados da Chave</h3>
+                    <p class="p-2 mt-2"><strong>Código: </strong> {{ object.codigo }} </p>
+                    <p class="p-2 mt-2"><strong>Sala Associada: </strong> {{ object.sala }} </p>
+                    <p class="p-2 mt-2"><strong>Disponibilidade: </strong> {{ object.disponibilidade }} </p>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p> Confirma a exclusão da chave "{{ object }}"? </p>
+                        <br/>
+                        <button class="button is-link is-primary" type="submit">Apagar</button>
+                        <button class="button is-danger is-pulled-right" type="reset">
+                            <a href="{% url 'chaves' %}">Cancelar</a>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'principal.html' %}
+{% block content %}
+    <section class="section has-background-white-ter">
+        <div class="container">
+            <div class="columns is-mobile">
+                <div class="column is-half is-offset-one-quarter">
+                    <h3 class="title is-size-3">Dados da Retirada</h3>
+                    <p class="p-2 mt-2"><strong>Sala: </strong> {{ object.sala }} </p>
+                    <p class="p-2 mt-2"><strong>Chave: </strong> {{ object.chave }} </p>
+                    <p class="p-2 mt-2"><strong>Data da Retirada: </strong> {{ object.dataretirada }} </p>
+                    <p class="p-2 mt-2"><strong>Data da Devolução: </strong> {{ object.datadevolucao }} </p>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p> Confirma a devolução da chave "{{ object.chave }}"? </p>
+                        <br/>
+                        <button class="button is-link is-primary" type="submit">Devolver</button>
+                        <button class="button is-danger is-pulled-right" type="reset">
+                            <a href="{% url 'retiradas' %}">Cancelar</a>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'principal.html' %}
+{% load static %}
+{% block content %}
+
+<section class="section has-background-white-ter">
+    <div class="buttons is-pulled-left mb-3">
+        <a href="{% url 'sala_adicionar' %}" class="button is-success">
+            <strong>Nova Sala</strong>
+        </a>
+    </div>
+    <div class="container has-text-centered">
+        <form action="" method="GET">
+            <div class="field is-grouped is-flex is-align-items-center is-flex-wrap-wrap">
+                <label class="label p-2 mt-2">Identificação da Sala: </label>
+                <div class="control is-expanded">
+                    <input class="input" type="text" name="buscar" value="{{ request.GET.buscar }}"
+                           placeholder="Digite a identificação da sala...">
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-link">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div style="text-align: center;">
+            <h1 class="subtitle is-size-3"><strong><br>
+                <p>Salas Cadastradas</p><br></strong></h1>
+        </div>
+        <div class="table">
+            <table class="table is-table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th class="has-text-centered">Identificação</th>
+                    <th class="has-text-centered" style="width: 500px;">Tipo</th>
+                    <th class="has-text-centered" style="width: 100px;">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sala in object_list %}
+                <tr>
+                    <td>
+                        <a href="#" data-toogle="modal" class="modal-target" data-bulma-modal="modal{{sala.id}}"
+                           id="modal{{sala.id}}">
+                            {{ sala.identificacao }}
+                        </a>
+                    </td>
+                    <td> {{ sala.tipo }}</td>
+                    <td class="has-text-centered is-flex is-flex-wrap-nowrap is-justify-content-center">
+                        <a href="{% url 'sala_editar' sala.pk %}">
+                                            <span class="icon">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                        </a>
+                        <a href="{% url 'sala_apagar' sala.pk %}">
+                                            <span class="icon">
+                                                <i class="far fa-trash-alt"></i>
+                                            </span>
+                        </a>
+                    </td>
+        </div>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+{% block head %}
+{% include "head.html" %}
+{% endblock %}
+
+<body class="hero is-fullheight has-background-dark">
+
+<nav class="navbar is-dark has-text-weight-bold" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{% url 'index' %}">
+            <img src="{% static 'img/icon2.png' %}">
+            <p class="has-text-danger-dark">KM</p>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+           data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <p class="navbar-item">|</p>
+            <a class="navbar-item" href="{% url 'funcionarios' %}">
+                FUNCIONÁRIOS
+            </a>
+            <p class="navbar-item">|</p>
+            <a class="navbar-item" href="{% url 'clientes' %}">
+                CLIENTES
+            </a>
+            <p class="navbar-item">|</p>
+            <a class="navbar-item" href="{% url 'salas' %}">
+                SALAS
+            </a>
+            <p class="navbar-item">|</p>
+            <a class="navbar-item" href="{% url 'chaves' %}">
+                CHAVES
+            </a>
+            <p class="navbar-item">|</p>
+            <a class="navbar-item has-background-danger-dark isha" href="{% url 'retiradas' %}">
+                RETIRAR
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>USUÁRIO</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+{% include 'messages.html' %}
+
+{% block content %} {% endblock %}
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}
+</body>
+
+</html>
